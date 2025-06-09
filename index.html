@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music UI - Download Now</title>
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --accent: #fd79a8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark), #1e272e);
+            color: var(--light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4);
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .download-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .screenshot {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            margin: 2rem auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .feature i {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .feature h3 {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-list {
+            list-style-type: none;
+        }
+
+        .feature-list li {
+            padding: 0.3rem 0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: var(--accent);
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.4);
+        }
+
+        .download-btn i {
+            margin-right: 0.5rem;
+        }
+
+        .platforms {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .version {
+            margin-top: 1rem;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 2rem 0;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .download-container {
+                padding: 2rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div>
+            <img src="./icon.png" width="15%" />
+        </div>
+        <h1>Musium</h1>
+
+        <p class="tagline">The ultimate music experience with YouTube Music integration and premium features</p>
+    </header>
+
+    <main class="download-container">
+        <h2>Download Now</h2>
+        <div class="platforms"></div>
+        <p>Enjoy unlimited music with our beautiful interface and powerful features</p>
+        <div class="platforms"></div>
+
+        <img src="./cover.png" width="100%" />
+
+        <div class="platforms">
+
+            <a href="#" class="download-btn">
+                <i class="fab fa-google-play"></i> Download
+            </a>
+
+        </div>
+
+        <p class="version">Current version: 1.0.0</p>
+    </main>
+
+    <section id="ad-top">
+        <!-- Google AdSense Ad Unit -->
+        <script async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-8946616372955623/3970516040"
+            crossorigin="anonymous"></script>
+        <!-- Ad Unit -->
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-app-pub-8946616372955623/3970516040"
+            data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </section>
+
+    <div class="features">
+        <div class="feature">
+            <h3><i class="fas fa-headphones"></i> Music Playback</h3>
+            <ul class="feature-list">
+                <li>Play (almost) any song with high quality from YouTube Music</li>
+                <li>Background playback support</li>
+                <li>Change audio quality (Low, Medium, High)</li>
+                <li>Built-in equalizer and loudness enhancer</li>
+            </ul>
+        </div>
+
+        <div class="feature">
+            <h3><i class="fas fa-search"></i> Discovery & Organization</h3>
+            <ul class="feature-list">
+                <li>Search for songs, artists and playlists</li>
+                <li>Reorder songs in playlist or queue</li>
+                <li>Add songs to favorites</li>
+                <li>Create and save custom playlists</li>
+            </ul>
+        </div>
+
+
+    </div>
+    <div class="features">
+        <div class="feature">
+            <h3><i class="fas fa-palette"></i> Customization</h3>
+            <ul class="feature-list">
+                <li>Dark Mode for comfortable night listening</li>
+                <li>Material You dynamic colors</li>
+                <li>Dynamic theme support</li>
+                <li>Multiple language support (partially)</li>
+            </ul>
+        </div>
+
+        <div class="feature">
+            <h3><i class="fas fa-download"></i> Offline Features</h3>
+            <ul class="feature-list">
+                <li>Download songs for offline playback</li>
+                <li>Save playlist for offline access</li>
+                <li>Save history locally</li>
+            </ul>
+        </div>
+
+
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Music UI. All rights reserved.</p>
+        <p><a href="#" style="color: var(--secondary);">Privacy Policy</a> | <a href="#"
+                style="color: var(--secondary);">Terms of Service</a></p>
+    </footer>
+</body>
+
+</html>
